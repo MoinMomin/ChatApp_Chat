@@ -1,0 +1,58 @@
+plugins {
+	id 'org.springframework.boot' version '2.3.3.RELEASE'
+	id 'io.spring.dependency-management' version '1.0.10.RELEASE'
+	id 'java'
+}
+
+group = 'com.chatApp'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	sourceCompatibility = '11'
+}
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+	mavenLocal()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-websocket'
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+
+	implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
+
+// https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api
+	implementation group: 'javax.xml.bind', name: 'jaxb-api', version: '2.3.0'
+	// https://mvnrepository.com/artifact/org.json/json
+	implementation group: 'org.json', name: 'json', version: '20240303'
+
+/*	// GraphQL Java Tools (for schema generation and execution)
+	implementation 'com.graphql-java:graphql-java-tools:5.2.4'*/
+
+
+/*// https://mvnrepository.com/artifact/com.graphql-java/graphql-java-tools
+	implementation group: 'com.graphql-java', name: 'graphql-java-tools', version: '5.2.4'
+
+// https://mvnrepository.com/artifact/com.graphql-java/graphiql-spring-boot-starter
+	implementation group: 'com.graphql-java', name: 'graphiql-spring-boot-starter', version: '5.0.2'
+
+	// https://mvnrepository.com/artifact/com.graphql-java/graphiql-spring-boot-starter
+	implementation group: 'com.graphql-java', name: 'graphiql-spring-boot-starter', version: '5.0.2'
+
+	implementation 'mysql:mysql-connector-java:8.0.27' // Use the appropriate version*/
+
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
